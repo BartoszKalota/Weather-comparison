@@ -12,7 +12,12 @@ export class AccuWeatherApiService {
    * @param {string} cityName
    */
   async getLocation(cityName) {
-    return response.json();
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/locations/v1/cities/search?apikey=${this.apiKey}&q=${cityName}`);
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   /**
@@ -20,7 +25,12 @@ export class AccuWeatherApiService {
    * @param {string} locationId - retuned from @getLocation API request
    */
   async getCurrentConditions(locationId) {
-    return response.json();
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/currentconditions/v1/${locationId}?apikey=${this.apiKey}`);
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   /**
@@ -28,7 +38,12 @@ export class AccuWeatherApiService {
    * @param {string} locationId - returned from @getLocation API request
    */
   async getDailyForecast(locationId) {
-    return response.json();
+    try {
+      const response = await fetch(`${this.apiBaseUrl}/forecasts/v1/daily/1day/${locationId}?apikey=${this.apiKey}&metric=true`);
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   getIconUrl(iconCode) {
