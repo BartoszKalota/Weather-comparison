@@ -8,7 +8,12 @@ export class WeatherBitApiService {
   }
 
   async getCurrent(cityName) {
-    return response.json();
+    try {
+      const response = await fetch(`${this.apiBaseUrl}?key=${this.apiKey}&city=${cityName}`);
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   getIconUrl(iconCode) {
