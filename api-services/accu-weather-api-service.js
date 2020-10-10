@@ -42,15 +42,18 @@ export class AccuWeatherApiService {
 }
 
 export class AccuWeatherMockService {
-  async getCurrentConditions(locationId) {
+  async getCurrentConditions() {
+    const response = await fetch('http://localhost:3000/mocks/accuweather-current');
     return response.json();
   }
 
-  async getDailyForecast(locationId) {
+  async getDailyForecast() {
+    const response = await fetch('http://localhost:3000/mocks/accuweather-daily');
     return response.json();
   }
 
-  async getLocation(cityName) {
+  async getLocation() {
+    const response = await fetch('http://localhost:3000/mocks/accuweather-location');
     return response.json();
   }
 
