@@ -17,7 +17,8 @@ export class WeatherBitApiService {
 }
 
 export class WeatherBitMockService {
-  async getCurrent(cityName) {
+  async getCurrent() {
+    const response = await fetch('http://localhost:3000/mocks/weatherbit-current');
     return response.json();
   }
 
