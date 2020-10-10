@@ -58,18 +58,30 @@ export class AccuWeatherApiService {
 
 export class AccuWeatherMockService {
   async getCurrentConditions() {
-    const response = await fetch('http://localhost:3000/mocks/accuweather-current');
-    return response.json();
+    try {
+      const response = await fetch('http://localhost:3000/mocks/accuweather-current');
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async getDailyForecast() {
-    const response = await fetch('http://localhost:3000/mocks/accuweather-daily');
-    return response.json();
+    try {
+      const response = await fetch('http://localhost:3000/mocks/accuweather-daily');
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async getLocation() {
-    const response = await fetch('http://localhost:3000/mocks/accuweather-location');
-    return response.json();
+    try {
+      const response = await fetch('http://localhost:3000/mocks/accuweather-location');
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   getIconUrl(iconCode) {

@@ -23,8 +23,12 @@ export class OpenWeatherMapApiService {
 
 export class OpenWeatherMapMockService {
   async getWeather() {
-    const response = await fetch('http://localhost:3000/mocks/openweathermap-current');
-    return response.json();
+    try {
+      const response = await fetch('http://localhost:3000/mocks/openweathermap-current');
+      return response.json();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   getIconUrl(iconCode) {
