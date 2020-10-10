@@ -9,11 +9,11 @@ export class WeatherBitAdapter {
 
   async getWeather(cityName) {
     try {
-      const current = await this.weatherBitApiService.getCurrent(cityName);
+      const weather = await this.weatherBitApiService.getWeather(cityName);
       const {
         ob_time, timezone, city_name, country_code,
         temp, weather: { description, icon }
-      } = current.data[0]
+      } = weather.data[0]
 
       return {
         lastObervationTime: new Date(moment.tz(ob_time, timezone).format()),
@@ -23,8 +23,8 @@ export class WeatherBitAdapter {
         },
         weather: {
           currentTemperature: temp,
-          minTemperature: null,  // was not provided
-          maxTemperature: null,  // was not provided
+          minTemperature: undefined,  // was not provided
+          maxTemperature: undefined,  // was not provided
           units: 'C',
           description,
           iconUrl: weatherBitApiService.getIconUrl(icon)
