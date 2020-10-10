@@ -7,7 +7,7 @@ export class WeatherBitApiService {
     this.apiKey = apiKey;
   }
 
-  async getCurrent(cityName) {
+  async getWeather(cityName) {
     try {
       const response = await fetch(`${this.apiBaseUrl}?key=${this.apiKey}&city=${cityName}`);
       return response.json();
@@ -22,7 +22,7 @@ export class WeatherBitApiService {
 }
 
 export class WeatherBitMockService {
-  async getCurrent() {
+  async getWeather() {
     try {
       const response = await fetch('http://localhost:3000/mocks/weatherbit-current');
       return response.json();
