@@ -1,6 +1,7 @@
 import express from 'express';
 import expressRateLimit from 'express-rate-limit';
 import compression from 'compression';
+import cors from 'cors';
 import { router as mocks } from './routes/weather-mocks.js';
 import { router as weather } from './routes/weather.js';
 import ENVS from './config.js';
@@ -14,6 +15,8 @@ app.use(expressRateLimit({
 }));
 // Request compression
 app.use(compression({ level: 9 }));
+// Cors
+app.use(cors({ methods: 'GET' }));
 
 // Front-end
 app.use(express.static('weather'));
