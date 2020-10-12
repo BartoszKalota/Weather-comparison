@@ -16,18 +16,18 @@ export class WeatherBitAdapter {
       } = weather.data[0]
 
       return {
-        lastObervationTime: new Date(moment.tz(ob_time, timezone).format()),
+        lastObservationTime: new Date(moment.tz(ob_time, timezone).format()),
         location: {
           cityName: city_name,
           countryCode: country_code
         },
         weather: {
-          currentTemperature: temp,
+          currentTemperature: temp.toFixed(1),
           minTemperature: undefined,  // was not provided
           maxTemperature: undefined,  // was not provided
           units: 'C',
           description,
-          iconUrl: weatherBitApiService.getIconUrl(icon)
+          iconUrl: this.weatherBitApiService.getIconUrl(icon)
         }
       };
     } catch (err) {

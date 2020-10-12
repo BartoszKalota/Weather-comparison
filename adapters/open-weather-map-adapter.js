@@ -14,18 +14,18 @@ export class OpenWeatherMapAdapter {
       } = weather;
 
       return {
-        lastObervationTime: new Date(dt * 1000),
+        lastObservationTime: new Date(dt * 1000),
         location: {
           cityName: name,
           countryCode: country
         },
         weather: {
-          currentTemperature: temp,
-          minTemperature: temp_min,
-          maxTemperature: temp_max,
+          currentTemperature: temp.toFixed(1),
+          minTemperature: temp_min.toFixed(1),
+          maxTemperature: temp_max.toFixed(1),
           units: 'C',
           description,
-          iconUrl: openWeatherMapApiService.getIconUrl(icon)
+          iconUrl: this.openWeatherMapApiService.getIconUrl(icon)
         }
       };
     } catch (err) {
