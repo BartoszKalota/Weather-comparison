@@ -49,7 +49,10 @@ const openWeatherMapAdapter = new OpenWeatherMapAdapter(openWeatherService);
 const accuWeatherAdapter = new AccuWeatherAdapter(accuWeatherService);
 
 router.get('/', async (req, res) => {
-  const locationSearch = req.query.city;  // query 'weather/?city=...' comes from front-end
+  const rawParam = req.query.city;  // query 'weather/?city=...' comes from front-end
+  const locationSearch = rawParam
+    .trim()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, "");  // removes accents and diacritics
   const [ weatherBit, openWeatherMap, accuWeather ] = await Promise.all([
     weatherBitAdapter.getWeather(locationSearch),
     openWeatherMapAdapter.getWeather(locationSearch),
