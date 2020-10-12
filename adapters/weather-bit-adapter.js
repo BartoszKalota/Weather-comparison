@@ -27,7 +27,7 @@ export class WeatherBitAdapter {
           maxTemperature: undefined,  // was not provided
           units: 'C',
           description,
-          iconUrl: weatherBitApiService.getIconUrl(icon)
+          iconUrl: this.weatherBitApiService.getIconUrl(icon)
         }
       };
     } catch (err) {

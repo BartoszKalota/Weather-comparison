@@ -25,7 +25,7 @@ export class OpenWeatherMapAdapter {
           maxTemperature: temp_max,
           units: 'C',
           description,
-          iconUrl: openWeatherMapApiService.getIconUrl(icon)
+          iconUrl: this.openWeatherMapApiService.getIconUrl(icon)
         }
       };
     } catch (err) {
