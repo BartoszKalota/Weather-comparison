@@ -7,13 +7,10 @@ export class AccuWeatherAdapter {
 
   async getWeather(cityName) {
     try {
-      const {
-        getLocation, getCurrentConditions, getDailyForecast, getIconUrl
-      } = this.accuWeatherApiService;
-      const [ location ] = await getLocation(cityName);
+      const [ location ] = await this.accuWeatherApiService.getLocation(cityName);
       const [ [ current ], daily ] = await Promise.all([
-        getCurrentConditions(location.Key),
-        getDailyForecast(location.Key)
+        this.accuWeatherApiService.getCurrentConditions(location.Key),
+        this.accuWeatherApiService.getDailyForecast(location.Key)
       ]);
 
       const {
@@ -38,7 +35,7 @@ export class AccuWeatherAdapter {
           maxTemperature: Maximum.Value.toFixed(1),
           units: 'C',
           description: WeatherText,
-          iconUrl: getIconUrl(WeatherIcon)
+          iconUrl: this.accuWeatherApiService.getIconUrl(WeatherIcon)
         }
       };
     } catch (err) {

@@ -15,56 +15,44 @@ import { AccuWeatherApiService, AccuWeatherMockService } from '../api-services/a
 
 export const router = express.Router();
 
-// === APPLICATION BOOTSTRAP
-
 /*
  By default all APIs will respond with hardcoded json mock data. Set each API to false in order to use real endpoint. 
  Beware of requet number limits per day.
  */
 
-const weatherBitService =
-  WEATHER_BIT_MOCK === 'true'
-    ? new WeatherBitMockService()
-    : new WeatherBitApiService(
-        WEATHER_BIT_ICON_BASE_URL,
-        WEATHER_BIT_API_BASE_URL,
-        WEATHER_BIT_API_KEY
-      );
+const weatherBitService = WEATHER_BIT_MOCK === 'true'
+  ? new WeatherBitMockService()
+  : new WeatherBitApiService(
+      WEATHER_BIT_ICON_BASE_URL,
+      WEATHER_BIT_API_BASE_URL,
+      WEATHER_BIT_API_KEY
+    );
 
-const openWeatherService =
-  OPEN_WEATHER_MAP_MOCK === 'true'
-    ? new OpenWeatherMapMockService()
-    : new OpenWeatherMapApiService(
-        OPEN_WEATHER_MAP_ICON_BASE_URL,
-        OPEN_WEATHER_MAP_API_BASE_URL,
-        OPEN_WEATHER_MAP_API_KEY
-      );
+const openWeatherService = OPEN_WEATHER_MAP_MOCK === 'true'
+  ? new OpenWeatherMapMockService()
+  : new OpenWeatherMapApiService(
+      OPEN_WEATHER_MAP_ICON_BASE_URL,
+      OPEN_WEATHER_MAP_API_BASE_URL,
+      OPEN_WEATHER_MAP_API_KEY
+    );
 
-const accuWeatherService =
-  ACCU_WEATHER_MOCK === 'true'
-    ? new AccuWeatherMockService()
-    : new AccuWeatherApiService(
-        ACCU_WEATHER_ICON_BASE_URL,
-        ACCU_WEATHER_API_BASE_URL,
-        ACCU_WEATHER_API_KEY
-      );
+const accuWeatherService = ACCU_WEATHER_MOCK === 'true'
+  ? new AccuWeatherMockService()
+  : new AccuWeatherApiService(
+      ACCU_WEATHER_ICON_BASE_URL,
+      ACCU_WEATHER_API_BASE_URL,
+      ACCU_WEATHER_API_KEY
+    );
 
 const weatherBitAdapter = new WeatherBitAdapter(weatherBitService);
 const openWeatherMapAdapter = new OpenWeatherMapAdapter(openWeatherService);
 const accuWeatherAdapter = new AccuWeatherAdapter(accuWeatherService);
 
-
-router.param('locationSearch', (req, res, next, locationSearch) => {
-  if (!locationSearch) {
-    res.status(409);
-    next(new Error('Location was not provided'));
-  }
-  req.locationSearch = locationSearch;
-  next();
-});
-
 router.get('/', async (req, res) => {
-  const locationSearch = req.locationSearch;
+  const rawParam = req.query.city;  // query 'weather/?city=...' comes from front-end
+  const locationSearch = rawParam
+    .trim()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, "");  // removes accents and diacritics
   const [ weatherBit, openWeatherMap, accuWeather ] = await Promise.all([
     weatherBitAdapter.getWeather(locationSearch),
     openWeatherMapAdapter.getWeather(locationSearch),

@@ -9,7 +9,7 @@ export class OpenWeatherMapApiService {
 
   async getWeather(cityName) {
     try {
-      const response = await fetch(`${this.apiBaseUrl}?q=${cityName}&units=metric&APPID=${this.apiKey}`);
+      const response = await fetch(`${this.apiBaseUrl}/weather?q=${cityName}&units=metric&APPID=${this.apiKey}`);
       return response.json();
     } catch (err) {
       console.log(err);
