@@ -1,5 +1,6 @@
 import express from 'express';
 import expressRateLimit from 'express-rate-limit';
+import compression from 'compression';
 import { router as mocks } from './routes/weather-mocks.js';
 import { router as weather } from './routes/weather.js';
 import ENVS from './config.js';
@@ -11,6 +12,8 @@ app.use(expressRateLimit({
   windowMs: (1000 * 60 * 60 * 24),
   max: 100
 }));
+// Request compression
+app.use(compression({ level: 9 }));
 
 // Front-end
 app.use(express.static('weather'));
@@ -23,7 +26,6 @@ app.use('/weather', weather);
 app.use((err, req, res, next) => {
   res.send(err.message);
 });
-
 // Page 404
 app.use((req, res, next) => {
   res.status(404).send('Page not found');
