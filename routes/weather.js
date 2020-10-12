@@ -1,10 +1,11 @@
 import express from 'express';
 
-import {
+import ENVS from '../config.js';
+const {
   WEATHER_BIT_MOCK, WEATHER_BIT_ICON_BASE_URL, WEATHER_BIT_API_BASE_URL, WEATHER_BIT_API_KEY,
   OPEN_WEATHER_MAP_MOCK, OPEN_WEATHER_MAP_ICON_BASE_URL, OPEN_WEATHER_MAP_API_BASE_URL, OPEN_WEATHER_MAP_API_KEY,
   ACCU_WEATHER_MOCK, ACCU_WEATHER_ICON_BASE_URL, ACCU_WEATHER_API_BASE_URL, ACCU_WEATHER_API_KEY
-} from '../config.js';
+} = ENVS;
 import { OpenWeatherMapAdapter } from '../adapters/open-weather-map-adapter.js';
 import { WeatherBitAdapter } from '../adapters/weather-bit-adapter.js';
 import { AccuWeatherAdapter } from '../adapters/accu-weather-adapter.js';
