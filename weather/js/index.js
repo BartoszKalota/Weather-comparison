@@ -1,12 +1,14 @@
-import { html, render } from './../node_modules/lit-html/lit-html.js';
-import { classMap } from './../node_modules/lit-html/directives/class-map.js';
+import * as litHTML from './../node_modules/lit-html/lit-html.js';
+const { html, render } = litHTML;   // requested by npm
+import * as litHTMLClassMap from './../node_modules/lit-html/directives/class-map.js';
+const { classMap } = litHTMLClassMap;   // requested by npm
 
-// APPLICATION BOOTSTRAP
+// APP BOOTSTRAP
 const appElement = document.querySelector('#app');
 
-const onWeatherSearchSubmit = (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.target);
+const onWeatherSearchSubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
 
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
@@ -45,20 +47,20 @@ const weatherDataTemplate = ({
   <ul class="weather-list">
     <li>
       ${weatherItemTemplate({
-        weatherItem: openWeatherMap,
-        apiProvider: 'OpenWeather',
+        weatherItem: weatherBit,
+        apiProvider: 'WeatherBit'
       })}
-    </li>
+    </li>  
     <li>
       ${weatherItemTemplate({
-        weatherItem: weatherBit,
-        apiProvider: 'WeatherBit',
+        weatherItem: openWeatherMap,
+        apiProvider: 'OpenWeather'
       })}
     </li>
     <li>
       ${weatherItemTemplate({
         weatherItem: accuWeather,
-        apiProvider: 'AccuWeather',
+        apiProvider: 'AccuWeather'
       })}
     </li>
   </ul>
