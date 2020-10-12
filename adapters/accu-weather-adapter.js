@@ -33,9 +33,9 @@ export class AccuWeatherAdapter {
           countryCode: ID
         },
         weather: {
-          currentTemperature: Value,
-          minTemperature: Minimum.Value,
-          maxTemperature: Maximum.Value,
+          currentTemperature: Value.toFixed(1),
+          minTemperature: Minimum.Value.toFixed(1),
+          maxTemperature: Maximum.Value.toFixed(1),
           units: 'C',
           description: WeatherText,
           iconUrl: getIconUrl(WeatherIcon)

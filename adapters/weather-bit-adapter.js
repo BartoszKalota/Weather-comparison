@@ -22,7 +22,7 @@ export class WeatherBitAdapter {
           countryCode: country_code
         },
         weather: {
-          currentTemperature: temp,
+          currentTemperature: temp.toFixed(1),
           minTemperature: undefined,  // was not provided
           maxTemperature: undefined,  // was not provided
           units: 'C',

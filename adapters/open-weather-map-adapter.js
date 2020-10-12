@@ -20,9 +20,9 @@ export class OpenWeatherMapAdapter {
           countryCode: country
         },
         weather: {
-          currentTemperature: temp,
-          minTemperature: temp_min,
-          maxTemperature: temp_max,
+          currentTemperature: temp.toFixed(1),
+          minTemperature: temp_min.toFixed(1),
+          maxTemperature: temp_max.toFixed(1),
           units: 'C',
           description,
           iconUrl: this.openWeatherMapApiService.getIconUrl(icon)
