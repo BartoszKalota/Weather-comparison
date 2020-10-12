@@ -9,7 +9,7 @@ export class WeatherBitApiService {
 
   async getWeather(cityName) {
     try {
-      const response = await fetch(`${this.apiBaseUrl}?key=${this.apiKey}&city=${cityName}`);
+      const response = await fetch(`${this.apiBaseUrl}/current?key=${this.apiKey}&city=${cityName}`);
       return response.json();
     } catch (err) {
       console.log(err);
