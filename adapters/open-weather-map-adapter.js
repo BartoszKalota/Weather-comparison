@@ -14,7 +14,7 @@ export class OpenWeatherMapAdapter {
       } = weather;
 
       return {
-        lastObervationTime: new Date(dt * 1000),
+        lastObservationTime: new Date(dt * 1000),
         location: {
           cityName: name,
           countryCode: country

@@ -27,7 +27,7 @@ export class AccuWeatherAdapter {
       } = daily;
 
       return {
-        lastObervationTime: new Date(LocalObservationDateTime),
+        lastObservationTime: new Date(LocalObservationDateTime),
         location: {
           cityName: LocalizedName,
           countryCode: ID

@@ -16,7 +16,7 @@ export class WeatherBitAdapter {
       } = weather.data[0]
 
       return {
-        lastObervationTime: new Date(moment.tz(ob_time, timezone).format()),
+        lastObservationTime: new Date(moment.tz(ob_time, timezone).format()),
         location: {
           cityName: city_name,
           countryCode: country_code
