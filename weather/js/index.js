@@ -16,8 +16,10 @@ const onWeatherSearchSubmit = (e) => {
   const mainElement = document.querySelector('#main');
   render(loadingTemplate(), mainElement);
 
-  fetch(/* Add your code here */)
-    .then((response) => response.json())
+  fetch(`weather?city=${formData.get('city')}`, {
+    headers: myHeaders
+  })
+    .then(res => res.json())
     .then((weatherData) => {
       render(weatherDataTemplate(weatherData), mainElement);
     });
@@ -25,7 +27,7 @@ const onWeatherSearchSubmit = (e) => {
 
 const welcomeTemplate = () => html`
   <section class="welcome">
-    <h1>Welcome to WeatherFeed!</h1>
+    <h1>Welcome to Weather Comparison App!</h1>
     <p>
       Type in name of any city around the world to get weather feed from three
       different API providers.
