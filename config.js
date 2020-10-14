@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
-  NODE_ENV: process.env.NODE_ENV,
   PORT: process.env.PORT,
   
   OPEN_WEATHER_MAP_MOCK: process.env.OPEN_WEATHER_MAP_MOCK,
