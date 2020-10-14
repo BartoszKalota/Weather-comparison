@@ -1,12 +1,14 @@
-import { html, render } from './../node_modules/lit-html/lit-html.js';
-import { classMap } from './../node_modules/lit-html/directives/class-map.js';
+import * as litHTML from './../node_modules/lit-html/lit-html.js';
+const { html, render } = litHTML;   // requested by npm
+import * as litHTMLClassMap from './../node_modules/lit-html/directives/class-map.js';
+const { classMap } = litHTMLClassMap;   // requested by npm
 
-// APPLICATION BOOTSTRAP
+// APP BOOTSTRAP
 const appElement = document.querySelector('#app');
 
-const onWeatherSearchSubmit = (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.target);
+const onWeatherSearchSubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
 
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
@@ -14,8 +16,10 @@ const onWeatherSearchSubmit = (event) => {
   const mainElement = document.querySelector('#main');
   render(loadingTemplate(), mainElement);
 
-  fetch(/* Add your code here */)
-    .then((response) => response.json())
+  fetch(`weather?city=${formData.get('city')}`, {
+    headers: myHeaders
+  })
+    .then(res => res.json())
     .then((weatherData) => {
       render(weatherDataTemplate(weatherData), mainElement);
     });
@@ -23,7 +27,7 @@ const onWeatherSearchSubmit = (event) => {
 
 const welcomeTemplate = () => html`
   <section class="welcome">
-    <h1>Welcome to WeatherFeed!</h1>
+    <h1>Welcome to Weather Comparison App!</h1>
     <p>
       Type in name of any city around the world to get weather feed from three
       different API providers.
@@ -45,20 +49,20 @@ const weatherDataTemplate = ({
   <ul class="weather-list">
     <li>
       ${weatherItemTemplate({
-        weatherItem: openWeatherMap,
-        apiProvider: 'OpenWeather',
+        weatherItem: weatherBit,
+        apiProvider: 'WeatherBit'
       })}
-    </li>
+    </li>  
     <li>
       ${weatherItemTemplate({
-        weatherItem: weatherBit,
-        apiProvider: 'WeatherBit',
+        weatherItem: openWeatherMap,
+        apiProvider: 'OpenWeather'
       })}
     </li>
     <li>
       ${weatherItemTemplate({
         weatherItem: accuWeather,
-        apiProvider: 'AccuWeather',
+        apiProvider: 'AccuWeather'
       })}
     </li>
   </ul>
