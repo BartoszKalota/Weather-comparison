@@ -11,7 +11,8 @@ const app = express();
 // Limit for 100 requests per day
 app.use(expressRateLimit({
   windowMs: (1000 * 60 * 60 * 24),
-  max: 100
+  max: 50,
+  message: 'Too many requests sent from this IP. Please try again later (50 requests per day).'
 }));
 // Request compression
 app.use(compression({ level: 9 }));
