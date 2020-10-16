@@ -1,6 +1,5 @@
-import * as litHTML from './../../node_modules/lit-html/lit-html.js';
-const { html, render } = litHTML;   // requested by npm
-import * as litHTMLClassMap from './../../node_modules/lit-html/directives/class-map.js';
+import { html, render } from 'https://unpkg.com/lit-html?module';
+import * as litHTMLClassMap from 'https://unpkg.com/lit-html/directives/class-map.js?module';
 const { classMap } = litHTMLClassMap;   // requested by npm
 
 // APP BOOTSTRAP
