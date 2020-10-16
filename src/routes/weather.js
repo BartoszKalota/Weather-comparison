@@ -1,17 +1,19 @@
 import express from 'express';
 
 import ENVS from '../config.js';
-const {
-  WEATHER_BIT_MOCK, WEATHER_BIT_ICON_BASE_URL, WEATHER_BIT_API_BASE_URL, WEATHER_BIT_API_KEY,
-  OPEN_WEATHER_MAP_MOCK, OPEN_WEATHER_MAP_ICON_BASE_URL, OPEN_WEATHER_MAP_API_BASE_URL, OPEN_WEATHER_MAP_API_KEY,
-  ACCU_WEATHER_MOCK, ACCU_WEATHER_ICON_BASE_URL, ACCU_WEATHER_API_BASE_URL, ACCU_WEATHER_API_KEY
-} = ENVS;
+
 import { OpenWeatherMapAdapter } from '../adapters/open-weather-map-adapter.js';
 import { WeatherBitAdapter } from '../adapters/weather-bit-adapter.js';
 import { AccuWeatherAdapter } from '../adapters/accu-weather-adapter.js';
 import { OpenWeatherMapApiService, OpenWeatherMapMockService } from '../api-services/open-weather-map-api-service.js';
 import { WeatherBitApiService, WeatherBitMockService } from '../api-services/weather-bit-api-service.js';
 import { AccuWeatherApiService, AccuWeatherMockService } from '../api-services/accu-weather-api-service.js';
+
+const {
+  WEATHER_BIT_MOCK, WEATHER_BIT_ICON_BASE_URL, WEATHER_BIT_API_BASE_URL, WEATHER_BIT_API_KEY,
+  OPEN_WEATHER_MAP_MOCK, OPEN_WEATHER_MAP_ICON_BASE_URL, OPEN_WEATHER_MAP_API_BASE_URL, OPEN_WEATHER_MAP_API_KEY,
+  ACCU_WEATHER_MOCK, ACCU_WEATHER_ICON_BASE_URL, ACCU_WEATHER_API_BASE_URL, ACCU_WEATHER_API_KEY
+} = ENVS;
 
 export const router = express.Router();
 
