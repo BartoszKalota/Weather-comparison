@@ -1,0 +1,1 @@
+import './app.js';  // required by Create-React-App configuration bootstrap
