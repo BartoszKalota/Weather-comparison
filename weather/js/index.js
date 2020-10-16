@@ -1,6 +1,5 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
-import * as litHTMLClassMap from 'https://unpkg.com/lit-html/directives/class-map.js?module';
-const { classMap } = litHTMLClassMap;   // requested by npm
+import { classMap } from 'https://unpkg.com/lit-html/directives/class-map.js?module';
 
 // APP BOOTSTRAP
 const appElement = document.querySelector('#app');
