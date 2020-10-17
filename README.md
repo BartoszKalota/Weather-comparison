@@ -4,9 +4,6 @@ A responsive app that allows you to compare current weather conditions for a giv
 
 ![Project screen](./src/images/project_screen.jpg)
 
-# Live demo
-https://weather-comparison.netlify.app/
-
 # Features
 ## Back-end
 * Limit of the number of requests to endpoints (see the 'Information' section).
@@ -28,7 +25,6 @@ https://weather-comparison.netlify.app/
 * WeatherBit does not provide minimum and maximum temperature values (*n/a* on the screen).
 * Front-end was bootstrapped with files provided by Coders Lab.
 * Hardcoded weather data as JSON files are stored in `./mocks` (see the 'Mocks mode' section).
-* The project was customized to [Create React App](https://github.com/facebook/create-react-app) bootstrap configuration. It was used to build the production version of the project for deploying the live demo.
 ## ENV file
 * This file was not included into the project (contains confidential API keys).
 * To receive your own API keys, you need to sign up in every weather data API provider and choose limited/trial service package.
