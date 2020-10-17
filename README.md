@@ -28,6 +28,7 @@ prepare the link
 * WeatherBit does not provide minimum and maximum temperature values (*n/a* on the screen).
 * Front-end was bootstrapped with files provided by Coders Lab.
 * Hardcoded weather data as JSON files are stored in `./mocks` (see the 'Mocks mode' section).
+* The project was customized to [Create React App](https://github.com/facebook/create-react-app) bootstrap configuration. It was used to build the production version of the project for deploying the live demo.
 ## ENV file
 * This file was not included into the project (contains confidential API keys).
 * To receive your own API keys, you need to sign up in every weather data API provider and choose limited/trial service package.
@@ -63,17 +64,14 @@ ACCU_WEATHER_API_KEY={your-api-key}             // provide your private API key
 
 # Download and Install
 * Use the link from the 'Code' button to download the project.
-* In the project main directory `./` , type:
+* In the project main directory, type:
 ```
 npm i
 ```
-and in the front-end project directory `./weather` , type:
-```
-npm i
-```
+
 to install necessary dependencies.
 * **Create an .env file to ensure the app proper execution** (see the 'ENV file' section for details).
-* In the project main directory `./` , run:
+* Run:
 ```
 npm run start
 ```

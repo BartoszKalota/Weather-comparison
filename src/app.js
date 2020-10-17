@@ -20,7 +20,7 @@ app.use(compression({ level: 9 }));
 app.use(cors({ methods: 'GET' }));
 
 // Front-end
-app.use(express.static('weather'));
+app.use(express.static('public'));
 
 // Routers
 app.use('/mocks', mocks);
