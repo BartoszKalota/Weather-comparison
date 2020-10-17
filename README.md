@@ -2,10 +2,10 @@
 
 A responsive app that allows you to compare current weather conditions for a given location from 3 various APIs. The project is the part of the Coders Lab course.
 
-![Project screen](./images/project_screen.jpg)
+![Project screen](./src/images/project_screen.jpg)
 
 # Live demo
-prepare the link
+https://weather-comparison.netlify.app/
 
 # Features
 ## Back-end
