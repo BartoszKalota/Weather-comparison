@@ -7,6 +7,9 @@ A responsive app that allows you to compare current weather conditions for a giv
 # Live demo
 https://weather-comparison-workshop-3.herokuapp.com/
 
+# Video demo
+[![Watch the video](./src/images/video-demo.jpg)](https://youtu.be/I93otWvwb50)
+
 # Features
 ## Back-end
 * Limit of the number of requests to endpoints (see the 'Information' section).

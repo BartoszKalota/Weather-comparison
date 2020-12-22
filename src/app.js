@@ -8,7 +8,7 @@ import ENVS from './config.js';
 
 const app = express();
 
-// Limit for 100 requests per day
+// Limit for 50 requests per day
 app.use(expressRateLimit({
   windowMs: (1000 * 60 * 60 * 24),
   max: 50,
